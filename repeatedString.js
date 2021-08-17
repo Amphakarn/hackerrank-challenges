@@ -13,7 +13,7 @@ function repeartedString(s, n) {
 }
 
 console.log(repeartedString('aba', 10)); // 7
-console.log(repeartedString('ceebbcb', 1000));
+console.log(repeartedString('ceebbcb', 1000)); // 0
 console.log(repeartedString('aab', 882787)); // 588525
 console.log(repeartedString('gfcaaaecbg', 547602)); // 164280
 console.log(repeartedString('jdiacikk', 899491)); // 112436
