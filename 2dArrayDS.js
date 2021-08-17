@@ -1,33 +1,13 @@
-function extractArray(startX, startY, arr) {
-  let subArr = [];
-
-  for (let y = startY; y < startY + 3; y++) {
-    for (let x = startX; x < startX + 3; x++) {
-      // Push values in the subArr if x & y positions are in the hourglass shape
-      if (
-        (x < startX + 3 && y === startY) ||
-        (x === startX + 1 && y === startY + 1) ||
-        (x < startX + 3 && y === startY + 2)
-      ) {
-        subArr.push(arr[y][x]);
-      }
-    }
-  }
-  return subArr;
-}
-
-function calSum(arr) {
-  const sum = (accumulator, currentValue) => accumulator + currentValue;
-  return arr.reduce(sum);
-}
-
 function hourglassSum(arr) {
   let sum = 0;
   let highestSum = 0;
-  for (let startY = 0; startY <= 3; startY++) {
-    for (let startX = 0; startX <= 3; startX++) {
-      sum = calSum(extractArray(startX, startY, arr));
-      if (sum > highestSum || (startX === 0 && startY === 0)) {
+  for (let row = 0; row <= 3; row++) {
+    for (let col = 0; col <= 3; col++) {
+      sum = arr[row][col] + arr[row][col + 1] + arr[row][col + 2];
+      sum += arr[row + 1][col + 1];
+      sum += arr[row + 2][col] + arr[row + 2][col + 1] + arr[row + 2][col + 2];
+
+      if (sum > highestSum || (col === 0 && row === 0)) {
         highestSum = sum;
       }
     }
